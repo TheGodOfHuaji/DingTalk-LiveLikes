@@ -17,6 +17,7 @@ body, html {
     box-sizing: border-box;
     /* background: #d9dfec; */
     background: #fff;
+    overflow: hidden;
 }
 
 .page_content {
@@ -28,6 +29,7 @@ body, html {
     height: 100%;
     box-sizing: border-box;
     text-align: center;
+    overflow: hidden;
 }
 
 h1 {font-family: 'GoogleSans';}
@@ -35,9 +37,9 @@ h1 {font-family: 'GoogleSans';}
 button#set, button#down {
     display: inline-block;
     text-align: center;
-    width: 240px;
+    width: 200px;
     padding: 12px 30px;
-    margin: 20px 5px;
+    margin: 20px auto;
     margin-right: 0;
     outline: 0;
     border: none;
@@ -57,9 +59,9 @@ button#set:hover, button#down:hover {
 
 input {
     display: block;
-    width: 120px;
+    width: 400px;
     padding: 12px 30px;
-    margin: 0 5px;
+    margin: 10px auto;
     outline: 0;
     border: none;
     background: #f4f4f4;
