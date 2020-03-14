@@ -15,7 +15,7 @@
                 let dd = d.data.replace(/&quot;/g, '"').replace(/&apos;/g, "'").replace(/&fyh;/g, "`").replace(/&qquot;/g, "&quot;");
                 dd.replace(/dingtalk\.grouplive\.uploadLikesClick\(B,t\.favorCountCache\),t\.favorCountCache=0\)\},1e4/, "dingtalk.grouplike.uploadLikesClick(B,"+likeNum+"),t.favorCountCache=0)},"+staySec)
                 window.finalData = dd;
-                document.getElementById("loading").style.display = "block";
+                document.getElementById("down").style.display = "block";
             }
             // $.ajax({
             //     type: "POST",
@@ -44,6 +44,6 @@
 </head>
 <body>
     <div id="loading">加载组件中......</div>
-    <button onclick="downloadData()" style="display:none">Download</button>
+    <button id="down" onclick="downloadData()" style="display:none">Download</button>
 </body>
 </html>
