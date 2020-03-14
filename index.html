@@ -53,7 +53,7 @@
         let setOpt = function() {
             likeNum = document.getElementById("likesEachTime").value;
             staySec = document.getElementById("submitTime").value;
-            statusDing = document.getElementById("statusDing").value;
+            statusDing = document.getElementById("statusDing").value || statusDing;
         }
     </script>
     <script>window.onload = loadData;</script>
