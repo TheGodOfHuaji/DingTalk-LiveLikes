@@ -14,10 +14,10 @@
             window.decodeJsonData = function(d) {
                 document.getElementById("loading").innerHTML = "";
                 let dd = d;// d.data.replace(/&quot;/g, '"').replace(/&apos;/g, "'").replace(/&fyh;/g, "`").replace(/&qquot;/g, "&quot;");
-                dd.replace(/dingtalk\.grouplive\.uploadLikesClick\(B,t\.favorCountCache\),t\.favorCountCache=0\)\},1e4/, "dingtalk.grouplike.uploadLikesClick(B,"+likeNum+"),t.favorCountCache=0)},"+staySec);
+                dd = dd.replace(/dingtalk\.grouplive\.uploadLikesClick\(B,t\.favorCountCache\),t\.favorCountCache=0\)\},1e4/, "dingtalk.grouplike.uploadLikesClick(B,"+likeNum+"),t.favorCountCache=0)},"+staySec);
                 console.log(dd);
                 if (iCanDoWhateverIWannaDo) {
-                    dd.replace(/this\.disableThumbup\?this\.messageBox\(I\.i18next\.t\("pc_grouplive_live_favor_ban_tips"\),\[I\.i18next\.t\("pc_grouplive_i_know"\),""\]\):/, "");
+                    dd = dd.replace(/this\.disableThumbup\?this\.messageBox\(I\.i18next\.t\("pc_grouplive_live_favor_ban_tips"\),\[I\.i18next\.t\("pc_grouplive_i_know"\),""\]\):/, "");
                 }
                 window.finalData = dd;
                 document.getElementById("down").style.display = "block";
