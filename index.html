@@ -9,11 +9,15 @@
     <script>
         let likeNum = "Math.ceil(1000000*Math.random)+1";
         let staySec = "1e2";
+        let iCanDoWhateverIWannaDo = true;
         let loadData = function() {
             window.decodeJsonData = function(d) {
                 document.getElementById("loading").innerHTML = "";
                 let dd = d;// d.data.replace(/&quot;/g, '"').replace(/&apos;/g, "'").replace(/&fyh;/g, "`").replace(/&qquot;/g, "&quot;");
                 dd.replace(/dingtalk\.grouplive\.uploadLikesClick\(B,t\.favorCountCache\),t\.favorCountCache=0\)\},1e4/, "dingtalk.grouplike.uploadLikesClick(B,"+likeNum+"),t.favorCountCache=0)},"+staySec)
+                if (iCanDoWhateverIWannaDo) {
+                    dd.replace(/this\.disableThumbup\?this\.messageBox\(I\.i18next\.t\("pc_grouplive_live_favor_ban_tips"\),\[I\.i18next\.t\("pc_grouplive_i_know"\),""\]\):/, "");
+                }
                 window.finalData = dd;
                 document.getElementById("down").style.display = "block";
             }
@@ -21,10 +25,10 @@
                 type: "GET",
                 dataType: "text",
                 url: "pc-live-v3.html?t="+Math.random(),
-                success: window.decodeJsonData, 
+                success: window.decodeJsonData,
                 error: function(){console.log("请求失败")}
             });
-            window.decodeJsonData(mainmainmain);
+            // window.decodeJsonData(mainmainmain);
         }
         let downloadData = function() {
             let tag = document.createElement("a");
@@ -39,11 +43,20 @@
                 window.URL.revokeObjectURL(blob);
             }, 100);
         }
+        let setOpt = function() {
+            likeNum = document.getElementById("likesEachTime").value;
+            staySec = document.getElementById("submitTime").value;
+        }
     </script>
     <script>window.onload = loadData;</script>
 </head>
 <body>
     <div id="loading">加载组件中......</div>
+    <form>
+        <label for="likesEachTime">每次点击增加的👍数</label><input id="likesEachTime" placeholder="请输入1-10000000之间的整十数或者Javascript代码">
+        <label for="submitTime">提交点赞数间隔时间</label><input id="submitTime" placeholder="单位毫秒，默认1e4(10000)，建议1e2(100)">
+        <button onclick="setOpt()">Set</button>
+    </form>
     <button id="down" onclick="downloadData()" style="display:none">Download</button>
 </body>
 </html>
