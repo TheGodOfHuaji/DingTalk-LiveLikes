@@ -40,7 +40,6 @@ button#set, button#down {
     width: 200px;
     padding: 12px 30px;
     margin: 20px auto;
-    margin-right: 0;
     outline: 0;
     border: none;
     background: #1296db;
@@ -55,6 +54,10 @@ button#set, button#down {
 button#set:hover, button#down:hover {
     background: #1258db;
     color: #fff;
+}
+
+::placeholder {
+    font-size: 1em;
 }
 
 input {
