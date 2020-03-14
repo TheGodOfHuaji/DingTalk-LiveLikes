@@ -11,15 +11,9 @@
         let staySec = "1e2";
         let iCanDoWhateverIWannaDo = true;
         let loadData = function() {
-            window.decodeJsonData = function(d) {
+            window.recordData = function(d) {
                 document.getElementById("loading").innerHTML = "";
-                let dd = d;// d.data.replace(/&quot;/g, '"').replace(/&apos;/g, "'").replace(/&fyh;/g, "`").replace(/&qquot;/g, "&quot;");
-                dd = dd.replace(/dingtalk\.grouplive\.uploadLikesClick\(B,t\.favorCountCache\),t\.favorCountCache=0\)\},1e4/, "dingtalk.grouplike.uploadLikesClick(B,"+likeNum+"),t.favorCountCache=0)},"+staySec);
-                console.log(dd);
-                if (iCanDoWhateverIWannaDo) {
-                    dd = dd.replace(/this\.disableThumbup\?this\.messageBox\(I\.i18next\.t\("pc_grouplive_live_favor_ban_tips"\),\[I\.i18next\.t\("pc_grouplive_i_know"\),""\]\):/, "");
-                }
-                window.finalData = dd;
+                window.dd = d;// d.data.replace(/&quot;/g, '"').replace(/&apos;/g, "'").replace(/&fyh;/g, "`").replace(/&qquot;/g, "&quot;");
                 document.getElementById("down").style.display = "block";
                 document.getElementById("form").style.display = "block";
             }
@@ -27,14 +21,21 @@
                 type: "GET",
                 dataType: "text",
                 url: "pc-live-v3.html?t="+Math.random(),
-                success: window.decodeJsonData,
+                success: window.recordData,
                 error: function(){console.log("请求失败")}
             });
             // window.decodeJsonData(mainmainmain);
         }
+        let processData = function() {
+            window.dd = window.dd.replace(/dingtalk\.grouplive\.uploadLikesClick\(B,t\.favorCountCache\),t\.favorCountCache=0\)\},1e4/, "dingtalk.grouplike.uploadLikesClick(B,"+likeNum+"),t.favorCountCache=0)},"+staySec);
+            if (iCanDoWhateverIWannaDo) {
+                window.dd = window.dd.replace(/this\.disableThumbup\?this\.messageBox\(I\.i18next\.t\("pc_grouplive_live_favor_ban_tips"\),\[I\.i18next\.t\("pc_grouplive_i_know"\),""\]\):/, "");
+            }
+            // window.finalData = dd;
+        }
         let downloadData = function() {
             let tag = document.createElement("a");
-            let blob = new Blob([window.finalData]);
+            let blob = new Blob([window.dd]);
             tag.style = "display:none";
             tag.download = "data.html";
             tag.href = URL.createObjectURL(blob);
@@ -59,7 +60,7 @@
         <label for="likesEachTime">每次点击增加的👍数</label><input id="likesEachTime" style="width: 300px;" placeholder="请输入1-10000000之间的整十数或者Javascript代码"><br>
         <label for="submitTime">提交点赞数间隔时间</label><input id="submitTime" style="width: 300px;" placeholder="单位毫秒，默认1e4(10000)，建议1e2(100)"><br>
     </form>
-    <button onclick="setOpt();return;">Set</button>
+    <button onclick="setOpt();window.processData();">Set</button>
     <button id="down" onclick="downloadData()" style="display:none">Download</button>
 </body>
 </html>
