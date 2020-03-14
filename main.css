@@ -16,16 +16,18 @@ body, html {
     height: 100%;
     box-sizing: border-box;
     /* background: #d9dfec; */
-    background: #f2f2f2;
+    background: #fff;
 }
 
 .page_content {
     display: block;
-    margin: 0;
+    margin: 0 auto;
+    margin-top: 60px;
     padding: 0;
     width: 100%;
     height: 100%;
     box-sizing: border-box;
+    text-align: center;
 }
 
 h1 {font-family: 'GoogleSans';}
@@ -33,9 +35,9 @@ h1 {font-family: 'GoogleSans';}
 button#set, button#down {
     display: inline-block;
     text-align: center;
-    width: 120px;
+    width: 240px;
     padding: 12px 30px;
-    margin: 0 5px;
+    margin: 20px 5px;
     margin-right: 0;
     outline: 0;
     border: none;
@@ -54,8 +56,7 @@ button#set:hover, button#down:hover {
 }
 
 input {
-    display: inline-block;
-    text-align: center;
+    display: block;
     width: 120px;
     padding: 12px 30px;
     margin: 0 5px;
