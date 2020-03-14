@@ -17,7 +17,7 @@
                 document.getElementById("loading").style.display = "block";
             }
             $.ajax({
-                type: "POST",
+                type: "GET",
                 dataType: "json",
                 url: "data.json?t="+Math.random(),
                 success: window.decodeJsonData, 
