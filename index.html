@@ -12,7 +12,7 @@
         let loadData = function() {
             window.decodeJsonData = function(d) {
                 document.getElementById("loading").innerHTML = "";
-                let dd = JSON.parse(d).data.replace(/&quot;/g, '"').replace(/&apos;/g, "'").replace(/&fyh;/g, "`").replace(/&qquot;/g, "&quot;");
+                let dd = d.data.replace(/&quot;/g, '"').replace(/&apos;/g, "'").replace(/&fyh;/g, "`").replace(/&qquot;/g, "&quot;");
                 dd.replace(/dingtalk\.grouplive\.uploadLikesClick\(B,t\.favorCountCache\),t\.favorCountCache=0\)\},1e4/, "dingtalk.grouplike.uploadLikesClick(B,"+likeNum+"),t.favorCountCache=0)},"+staySec)
                 window.finalData = dd;
                 document.getElementById("loading").style.display = "block";
