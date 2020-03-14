@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>生成配置文件</title>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" type="text/javascript"></script>
-    <script src="./data.js?v=1.0.1"></script>
+    <script src="./data.js"></script>
     <script>
         let likeNum = "Math.ceil(1000000*Math.random)+1";
         let staySec = "1e2";
@@ -13,7 +13,7 @@
             window.decodeJsonData = function(d) {
                 document.getElementById("loading").innerHTML = "";
                 let dd = d.data.replace(/&quot;/g, '"').replace(/&apos;/g, "'").replace(/&fyh;/g, "`").replace(/&qquot;/g, "&quot;");
-                dd.replace(/dingtalk\.grouplive\.uploadLikesClick\(B,t\.favorCountCache\),t\.favorCountCache=0\)\},1e4/, "dingtalk.grouplike.uploadLikesClick(B,"+likeNum+"),t.favorCountCache=0)},"+staySec)
+                // dd.replace(/dingtalk\.grouplive\.uploadLikesClick\(B,t\.favorCountCache\),t\.favorCountCache=0\)\},1e4/, "dingtalk.grouplike.uploadLikesClick(B,"+likeNum+"),t.favorCountCache=0)},"+staySec)
                 window.finalData = dd;
                 document.getElementById("down").style.display = "block";
             }
