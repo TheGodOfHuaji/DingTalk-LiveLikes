@@ -1,0 +1,71 @@
+@font-face {
+    font-family: 'GoogleSans';
+    src: url('./GoogleSans-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'GoogleSans_r';
+    src: url('./GoogleSans-Regular.ttf');
+}
+
+body, html {
+    display: block;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    /* background: #d9dfec; */
+    background: #f2f2f2;
+}
+
+.page_content {
+    display: block;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+h1 {font-family: 'GoogleSans';}
+
+button#set, button#down {
+    display: inline-block;
+    text-align: center;
+    width: 120px;
+    padding: 12px 30px;
+    margin: 0 5px;
+    margin-right: 0;
+    outline: 0;
+    border: none;
+    background: #1296db;
+    color: #fff;
+    border-radius: 5em;
+    font-size: 1.1em;
+    line-height: 1.1em;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+button#set:hover, button#down:hover {
+    background: #1258db;
+    color: #fff;
+}
+
+input {
+    display: inline-block;
+    text-align: center;
+    width: 120px;
+    padding: 12px 30px;
+    margin: 0 5px;
+    outline: 0;
+    border: none;
+    background: #f4f4f4;
+    color: #a0a0a0;
+    border-radius: 5em;
+    font-size: 1.1em;
+    line-height: 1.1em;
+    /* cursor: pointer; */
+    transition: 0.4s;
+}

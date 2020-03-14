@@ -4,18 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>生成配置文件</title>
+    <link rel="stylesheet" href="./main.css">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" type="text/javascript"></script>
     <!-- <script src="./data.js"></script> -->
     <script>
         let likeNum = "Math.ceil(1000000*Math.random)+1";
         let staySec = "1e2";
         let iCanDoWhateverIWannaDo = true;
+        let statusDing = "帅气的老师正在直播中";
         let loadData = function() {
             window.recordData = function(d) {
                 document.getElementById("loading").innerHTML = "";
                 window.dd = d;// d.data.replace(/&quot;/g, '"').replace(/&apos;/g, "'").replace(/&fyh;/g, "`").replace(/&qquot;/g, "&quot;");
                 document.getElementById("down").style.display = "block";
                 document.getElementById("form").style.display = "block";
+                document.getElementById("set").style.display = "block";
             }
             $.ajax({
                 type: "GET",
@@ -28,6 +31,7 @@
         }
         let processData = function() {
             window.dd = window.dd.replace(/dingtalk\.grouplive\.uploadLikesClick\(B,t\.favorCountCache\),t\.favorCountCache=0\)\},1e4/, "dingtalk.grouplike.uploadLikesClick(B,"+likeNum+"),t.favorCountCache=0)},"+staySec);
+            window.dd = window.dd.replace(/\u76f4\u64ad\u4e2d/g, statusDing);
             if (iCanDoWhateverIWannaDo) {
                 window.dd = window.dd.replace(/this\.disableThumbup\?this\.messageBox\(I\.i18next\.t\("pc_grouplive_live_favor_ban_tips"\),\[I\.i18next\.t\("pc_grouplive_i_know"\),""\]\):/, "");
             }
@@ -49,18 +53,22 @@
         let setOpt = function() {
             likeNum = document.getElementById("likesEachTime").value;
             staySec = document.getElementById("submitTime").value;
+            statusDing = document.getElementById("statusDing").value;
         }
     </script>
     <script>window.onload = loadData;</script>
 </head>
 <body>
-    <h1>DingTalk-LiveLikes</h1>
-    <div id="loading">加载组件中......</div>
-    <form id="form" style="display: none;">
-        <label for="likesEachTime">每次点击增加的👍数</label><input id="likesEachTime" style="width: 300px;" placeholder="请输入1-10000000之间的整十数或者Javascript代码"><br>
-        <label for="submitTime">提交点赞数间隔时间</label><input id="submitTime" style="width: 300px;" placeholder="单位毫秒，默认1e4(10000)，建议1e2(100)"><br>
-    </form>
-    <button onclick="setOpt();processData();">Set</button>
-    <button id="down" onclick="downloadData()" style="display:none">Download</button>
+    <div class="page_content">
+        <h1>DingTalk-LiveLikes</h1>
+        <div id="loading">加载组件中......</div>
+        <form id="form" style="display: none;">
+            <label for="likesEachTime">每次点击增加的👍数</label><input id="likesEachTime" style="width: 300px;" placeholder="请输入1-10000000之间的整十数或者Javascript代码"><br>
+            <label for="submitTime">提交点赞数间隔时间</label><input id="submitTime" style="width: 300px;" placeholder="单位毫秒，原值为1e4(即10000)，默认修改为1e2(即100)"><br>
+            <label for="statusDing">左上角红框内显示内容</label><input id="statusDing" style="width: 300px;" placeholder="原值为“直播中”，默认修改为“帅气的老师正在直播”"><br>
+        </form>
+        <button id="set" onclick="setOpt();processData();" style="display: none;">Set</button>
+        <button id="down" onclick="downloadData()" style="display:none">Download</button>
+    </div>
 </body>
 </html>
