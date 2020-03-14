@@ -14,7 +14,7 @@
             window.decodeJsonData = function(d) {
                 document.getElementById("loading").innerHTML = "";
                 let dd = d;// d.data.replace(/&quot;/g, '"').replace(/&apos;/g, "'").replace(/&fyh;/g, "`").replace(/&qquot;/g, "&quot;");
-                dd.replace(/dingtalk\.grouplive\.uploadLikesClick\(B,t\.favorCountCache\),t\.favorCountCache=0\)\},1e4/, "dingtalk.grouplike.uploadLikesClick(B,"+likeNum+"),t.favorCountCache=0)},"+staySec)
+                dd.replace(/dingtalk\.grouplive\.uploadLikesClick\(B,t\.favorCountCache\),t\.favorCountCache=0\)\},1e4/, "dingtalk.grouplike.uploadLikesClick(B,"+likeNum+"),t.favorCountCache=0)},"+staySec);
                 if (iCanDoWhateverIWannaDo) {
                     dd.replace(/this\.disableThumbup\?this\.messageBox\(I\.i18next\.t\("pc_grouplive_live_favor_ban_tips"\),\[I\.i18next\.t\("pc_grouplive_i_know"\),""\]\):/, "");
                 }
