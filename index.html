@@ -51,8 +51,8 @@
             }, 100);
         }
         let setOpt = function() {
-            likeNum = document.getElementById("likesEachTime").value;
-            staySec = document.getElementById("submitTime").value;
+            likeNum = document.getElementById("likesEachTime").value || likeNum;
+            staySec = document.getElementById("submitTime").value || staySec;
             statusDing = document.getElementById("statusDing").value || statusDing;
         }
     </script>
@@ -69,6 +69,7 @@
         </form>
         <button id="set" onclick="setOpt();processData();" style="display: none;">Set</button>
         <button id="down" onclick="downloadData()" style="display:none">Download</button>
+        <a href="//github.com/TheGodOfHuaji/DingTalk-LiveLikes" class="red">开始前请先点我查看README</a>
     </div>
 </body>
 </html>

@@ -76,3 +76,12 @@ input {
     /* cursor: pointer; */
     transition: 0.4s;
 }
+
+a.red {
+    color: #d84532;
+    transition: 0.4s;
+}
+
+a.red:hover {
+    color: #b93f2e;
+}
